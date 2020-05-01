@@ -369,6 +369,8 @@
 			};
 			CPU_COST_1: core-core1{
 				busy-cost-data = <
+					24	19
+					35	19
 					46	22
 					61	31
 					72	39
@@ -419,6 +421,8 @@
 			};
 			CLUSTER_COST_1: cluster-core1{
 			busy-cost-data = <
+					24	1
+					35	1
 					46      1
 					61      3
 					72      4
@@ -803,7 +807,7 @@
 		gpu_voltage_offset_margin = <37500>;
 		gpu_tmu_control = <1>;
 		gpu_temp_throttling_level_num = <6>;
-		gpu_temp_throttling = <572000 546000 455000 338000 260000 260000>;
+		gpu_temp_throttling = <572000 546000 455000 338000 299000 260000>;
 		gpu_power_coeff = <625>;
 		gpu_dvfs_time_interval = <5>; /*1 tick : 10ms*/
 		gpu_default_wakeup_lock = <1>;
@@ -5135,7 +5139,7 @@
 			cal-id = <ACPM_DVFS_CPUCL0>;
 			dm-type = <DM_CPU_CL0>;
 
-			min-freq = <455000>;
+			min-freq = <208000>;
 
 			/* PM QoS Class ID*/
 			pm_qos-min-class = <3>;
@@ -5158,7 +5162,9 @@
 						   832000  546000
 						   715000  546000
 						   598000  421000
-						   455000       0
+						   455000	0
+						   299000  	0 
+						   208000   	0
 						   >;
 				};
 				mif-skew {
@@ -5175,7 +5181,7 @@
 			cal-id = <ACPM_DVFS_CPUCL1>;
 			dm-type = <DM_CPU_CL1>;
 
-			min-freq = <650000>;
+			min-freq = <598000>;
 			max-freq = <1794000>;
 			policy-max = <1794000>;
 

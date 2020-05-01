@@ -9,6 +9,19 @@
 #
 # Normal rules
 #
+arch/arm64/boot/dtb.img
+arch/arm64/boot/dts/exynos/exynos9810-star2lte_eur_open_26.dtb.reverse.dts
+boot.img-dt
+drivers/gator_5.27/gator_src_md5.h
+dts.sh
+arch/arm64/boot/dts/exynos/exynos9810-star2lte_eur_open_16.dtb.reverse.dts
+arch/arm64/boot/dts/exynos/exynos9810-star2lte_eur_open_17.dtb.reverse.dts
+arch/arm64/boot/dts/exynos/exynos9810-star2lte_eur_open_18.dtb.reverse.dts
+arch/arm64/boot/dts/exynos/exynos9810-star2lte_eur_open_20.dtb.reverse.dts
+arch/arm64/boot/dts/exynos/exynos9810-star2lte_eur_open_23.dtb.reverse.dts
+boot.img-zImage
+scripts/crypto/__pycache__/
+scripts/fmp/__pycache__/
 .*
 *.o
 *.o.*

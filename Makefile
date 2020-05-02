@@ -256,8 +256,8 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/x86/ -e s/x86_64/x86/ \
 # "make" in the configured kernel build directory always uses that.
 # Default value for CROSS_COMPILE is not to prefix executables
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
-ARCH		?= $(SUBARCH)
-CROSS_COMPILE	?= ~/kernel/toolchain/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-
+ARCH		?= arm64
+CROSS_COMPILE	?= ${HOME}/kernel/toolchain/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-
 
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
@@ -346,7 +346,9 @@ include scripts/Kbuild.include
 AS		= $(CCACHE) $(CROSS_COMPILE)as
 LD		= $(CCACHE) $(CROSS_COMPILE)ld
 LDGOLD		= $(CCACHE) $(CROSS_COMPILE)ld.gold
-CC		= $(CCACHE) $(CROSS_COMPILE)gcc
+#CC		= $(CROSS_COMPILE)gcc
+#CC             = $(srctree)/toolchain/clang/host/linux-x86/clang-r353983c/bin/clang
+CC              = $(CCACHE) ${HOME}/kernel/toolchain/clang/bin/clang
 CPP		= $(CCACHE) $(CC) -E
 AR		= $(CCACHE) $(CROSS_COMPILE)ar
 NM		= $(CCACHE) $(CROSS_COMPILE)nm
@@ -532,7 +534,9 @@ endif
 
 ifeq ($(cc-name),clang)
 ifneq ($(CROSS_COMPILE),)
-CLANG_TRIPLE	?= $(CROSS_COMPILE)
+#CLANG_TRIPLE	?= $(CROSS_COMPILE)
+#CLANG_TRIPLE	?= $(srctree)/toolchain/clang/host/linux-x86/clang-r353983c/bin/aarch64-linux-gnu-
+CLANG_TRIPLE	?=  ${HOME}/kernel/toolchain/clang/bin/aarch64-linux-gnu-
 CLANG_FLAGS	+= --target=$(notdir $(CLANG_TRIPLE:%-=%))
 ifeq ($(shell $(srctree)/scripts/clang-android.sh $(CC) $(CLANG_FLAGS)), y)
 $(error "Clang with Android --target detected. Did you specify CLANG_TRIPLE?")
